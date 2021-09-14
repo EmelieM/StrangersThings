@@ -8,12 +8,17 @@ import {
     Redirect
   } from 'react-router-dom';
 
-import {Header} from "./components";
+import {Header,
+// Login,
+// Navbar,
+// NewPosts,
+// Profile,
+// Home
+} from "./components";
 
 const App = () => {
 return (
   <div id="App">
-    <h1>Hello world!</h1>
     <Header />
   </div>
 )
