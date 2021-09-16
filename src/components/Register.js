@@ -1,36 +1,40 @@
 import React, { useState } from 'react';
-import { loginUser } from '../api';
+import { registerUser } from '../api';
 import { storeUser } from '../auth';
 
-const Login = (props) => {
+const Register = (props) => {
 
     const setIsLoggedIn = props.setIsLoggedIn;
     const setIsLoading = props.setIsLoading;
 
     const [userName, setUserName] = useState("")
     const [passWord, setPassword] = useState("")
+    const [confirmPass, setConfirm] = useState("")
 
 
     return <div><header>
         <h1>Welcome to Strangers' Things!</h1></header>
 
 
-
-        <div className="login-main">
+        <div className="register-main">
             <form
-            id="login"
+            id="register"
             onSubmit={async (event)=>{
               event.preventDefault();
               setIsLoading(true);
 
               try{
-                const results = await loginUser(userName, passWord)
+                if (passWord === confirmPass){
+                const results = await registerUser(userName, passWord)
                 console.log(results.data.token)
                 storeUser(results.data.token)
-                setIsLoggedIn(true)
+                setIsLoggedIn(true)} else {
+                    console.log("Passwords do not match")
+                    alert("Passwords do not match")
+                }
               }
               catch(err){
-                console.error(error)
+                console.error(err)
               }
               finally{
                 setIsLoading(false)
@@ -66,6 +70,20 @@ const Login = (props) => {
             />
             </fieldset>
 
+            <fieldset className="pass-input">
+            <label htmlFor="passWord">Password</label>
+            <input 
+              id="passWord"
+              type="text"
+              placeholder="confirm password"
+              value={confirmPass}
+              onChange={(event)=>{
+                  setConfirm(event.target.value)
+              }}
+              required
+            />
+            </fieldset>
+
             <button type="submit">Submit</button>
             </form>
         </div>
@@ -74,9 +92,5 @@ const Login = (props) => {
 
 }
 
-/*This will have the login options. 
-If they do not have a login that matches the registered logins an error will pop up
-and they'll be directed to register a new user
-there will be a link on the bottom to register as a new user which will redirect to the register tab*/
 
-export default Login;
+export default Register;
