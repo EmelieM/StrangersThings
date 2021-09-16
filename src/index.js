@@ -14,7 +14,7 @@ Login,
 Register,
 // NewPosts,
 // Profile,
-// Home,
+Home,
 // Search
 } from "./components";
 
@@ -37,6 +37,9 @@ return (
     <Link className="navBarLink" to="/register">
       Register
     </Link>
+    <Link className="navBarLink" to="/">
+      Home
+    </Link>
     </nav>
 
     <Switch>
@@ -47,6 +50,10 @@ return (
       <Route path="/register">
         {" "}
         <Register setIsLoading={setIsLoading} setIsLoggedIn={setIsLoggedIn} />
+      </Route>
+      <Route path="/">
+        {" "}
+        <Home />
       </Route>
     </Switch>
 
