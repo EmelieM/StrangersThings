@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { loginUser } from '../api';
 import { storeUser } from '../auth';
+import { Link } from 'react-router-dom';
 
 const Login = (props) => {
 
@@ -67,6 +68,10 @@ const Login = (props) => {
             </fieldset>
 
             <button type="submit">Submit</button>
+            
+              <Link className="navBarLink" to="/register">
+              Register new user</Link>
+              
             </form>
         </div>
 

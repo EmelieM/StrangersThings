@@ -9,50 +9,85 @@ import {
   Link,
 } from "react-router-dom";
 
-import {
-  Header,
-  Login,
-  Register,
-  // NewPosts,
-  // Profile,
-  Home,
-  // Search
+import {Header,
+Login,
+Register,
+NewPost,
+// Profile,
+Home,
+// Search
 } from "./components";
 
+import { clearCurrentUser, getToken } from './auth'
+
+//
+
 const App = () => {
-  const [posts, setPosts] = useState([]);
+const [isLoggedIn, setIsLoggedIn] = useState(false)
+const [isLoading, setIsLoading] = useState(false)
+const [allPosts, setAllPosts] = useState([]);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+useEffect(()=>{
+  if (getToken()){
+    setIsLoggedIn(true)
+  }
+}, [])
 
-  return (
-    <div id="App">
-      <Header />
+return (
+  <div id="App">
+    <Header />
 
-      <nav className="navBar">
-        <Link className="navBarLink" to="/login">
-          Login
-        </Link>
-        <Link className="navBarLink" to="/register">
-          Register
-        </Link>
-        <Link className="navBarLink" to="/">
-          Home
-        </Link>
-      </nav>
+    {isLoggedIn===false ? <nav className="navBar">
+    <Link className="navBarLink" to="/">
+      Home
+    </Link>
+    <Link className="navBarLink" to="/login">
+      Login
+    </Link>
+    <Link className="navBarLink" to="/register">
+      Register
+    </Link>
+    </nav>
 
-      <Switch>
-        <Route path="/login">
-          <Login setIsLoading={setIsLoading} setIsLoggedIn={setIsLoggedIn} />
-        </Route>
-        <Route path="/register">
-          <Register setIsLoading={setIsLoading} setIsLoggedIn={setIsLoggedIn} />
-        </Route>
-        <Route path="/">
-          <Home />
-          <newPost />
-        </Route>
-      </Switch>
+    :
+
+    <nav className="navBar">
+    <Link className="navBarLink" to="/">
+      Home
+    </Link>
+    {/* <Link className="navBarLink" to="/Profile">Profile</Link> */}
+    <Link className="navBarLink" to="/"
+    onClick={(event)=>{clearCurrentUser()}}>Logout</Link>
+    <Link className="navBarLink" to="/NewPost">
+      Sell a thing
+    </Link>
+    </nav>}
+
+    <Switch>
+      <Route path="/login">
+        {" "}
+        <Login setIsLoading={setIsLoading} setIsLoggedIn={setIsLoggedIn} />
+      </Route>
+      <Route path="/register">
+        {" "}
+        <Register setIsLoading={setIsLoading} setIsLoggedIn={setIsLoggedIn} />
+      </Route>
+      <Route path="/NewPost">
+        {" "}
+        <NewPost allPosts={allPosts} setAllPosts={setAllPosts} setIsLoading={setIsLoading}/>
+      </Route>
+      {/* <Route path="/Profile">
+        {" "}
+        <Profile />
+      </Route> */}
+      <Route path="/">
+        {" "}
+        <Home allPosts={allPosts} setAllPosts={setAllPosts}/>
+      </Route>
+    </Switch>
+
+
+
     </div>
   );
 };

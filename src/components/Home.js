@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Home = () => {
-  const [allPosts, setAllPosts] = useState([]);
+const Home = (props) => {
+  const allPosts = props.allPosts;
+  const setAllPosts = props.setAllPosts;
 
   async function fetchAllPosts() {
     try {
@@ -16,7 +17,6 @@ const Home = () => {
         }
       );
       setAllPosts(response.data.data.posts);
-      console.log(response);
     } catch (err) {
       console.log(err);
     }
@@ -25,7 +25,6 @@ const Home = () => {
   useEffect(() => {
     fetchAllPosts();
   }, []);
-console.log(allPosts)
   return (
     <div className="posts-main-countainer">
       <h1>Posts</h1>

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getToken } from '../auth';
 
 const BASE = 'https://strangers-things.herokuapp.com/api/2106-CPU-RM-WEB-PT'
 
@@ -16,6 +17,7 @@ export async function loginUser(username, password) {
   }
 }
 
+//
 
 export async function registerUser(username, password) {
   try {
@@ -28,5 +30,30 @@ export async function registerUser(username, password) {
     return data;
   } catch (error) {
     throw error;
+  }
+}
+
+//
+
+export async function makePosting(title, description, price, location, willDeliver){
+  const token = getToken()
+
+  try{
+    const { data } = await axios.post(`${ BASE }/posts`,
+    {post:{
+      title,
+      description,
+      price,
+      location,
+      willDeliver
+    }},
+    {headers: {
+      "Content-Type": 'application/JSON',
+      'Authorization': `Bearer ${token}`
+    }});
+    return data
+  }
+  catch(error){
+    throw error
   }
 }
