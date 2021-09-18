@@ -1,13 +1,13 @@
-import React, { useState, useEffect} from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
 
 import {
-    BrowserRouter as Router,
-    Route,
-    Switch,
-    Redirect,
-    Link
-  } from 'react-router-dom';
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+  Link,
+} from "react-router-dom";
 
 import {Header,
 Login,
@@ -86,15 +86,15 @@ return (
       </Route>
     </Switch>
 
-  </div>
-)
 
-}
 
+    </div>
+  );
+};
 
 ReactDOM.render(
   <Router>
-  <App />
+    <App />
   </Router>,
-  document.getElementById('root')
+  document.getElementById("root")
 );

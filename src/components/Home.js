@@ -31,7 +31,7 @@ const Home = (props) => {
       {allPosts.length
         ? allPosts.map((e) => {
             return (
-              <div key={e._id}>
+              <div key={e._id} className="post-card">
           
                 <h3>{e.title}</h3>
                 <p>{e.description}</p>
