@@ -1,71 +1,65 @@
-import React, { useState, useEffect} from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
 
 import {
-    BrowserRouter as Router,
-    Route,
-    Switch,
-    Redirect,
-    Link
-  } from 'react-router-dom';
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+  Link,
+} from "react-router-dom";
 
-import {Header,
-Login,
-Register,
-// NewPosts,
-// Profile,
-Home,
-// Search
+import {
+  Header,
+  Login,
+  Register,
+  // NewPosts,
+  // Profile,
+  Home,
+  // Search
 } from "./components";
 
 const App = () => {
-const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([]);
 
-const [isLoggedIn, setIsLoggedIn] = useState(false)
-const [isLoading, setIsLoading] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
+  return (
+    <div id="App">
+      <Header />
 
+      <nav className="navBar">
+        <Link className="navBarLink" to="/login">
+          Login
+        </Link>
+        <Link className="navBarLink" to="/register">
+          Register
+        </Link>
+        <Link className="navBarLink" to="/">
+          Home
+        </Link>
+      </nav>
 
-return (
-  <div id="App">
-    <Header />
-
-    <nav className="navBar">
-    <Link className="navBarLink" to="/login">
-      Login
-    </Link>
-    <Link className="navBarLink" to="/register">
-      Register
-    </Link>
-    <Link className="navBarLink" to="/">
-      Home
-    </Link>
-    </nav>
-
-    <Switch>
-      <Route path="/login">
-        {" "}
-        <Login setIsLoading={setIsLoading} setIsLoggedIn={setIsLoggedIn} />
-      </Route>
-      <Route path="/register">
-        {" "}
-        <Register setIsLoading={setIsLoading} setIsLoggedIn={setIsLoggedIn} />
-      </Route>
-      <Route path="/">
-        {" "}
-        <Home />
-      </Route>
-    </Switch>
-
-  </div>
-)
-
-}
-
+      <Switch>
+        <Route path="/login">
+          <Login setIsLoading={setIsLoading} setIsLoggedIn={setIsLoggedIn} />
+        </Route>
+        <Route path="/register">
+          <Register setIsLoading={setIsLoading} setIsLoggedIn={setIsLoggedIn} />
+        </Route>
+        <Route path="/">
+          <Home />
+          <newPost />
+        </Route>
+      </Switch>
+    </div>
+  );
+};
 
 ReactDOM.render(
   <Router>
-  <App />
+    <App />
   </Router>,
-  document.getElementById('root')
+  document.getElementById("root")
 );

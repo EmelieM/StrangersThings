@@ -1,0 +1,80 @@
+/* #page {
+    display: grid;
+    width: 100%;
+    height: 250px;
+    grid-template-areas: "head head"
+                         "nav  main"
+                         "nav  foot";
+    grid-template-rows: 50px 1fr 30px;
+    grid-template-columns: 150px 1fr;
+  }
+  
+  #page > header {
+    grid-area: head;
+    background-color: #8ca0ff;
+  }
+  
+  #page > nav {
+    grid-area: nav;
+    background-color: #ffa08c;
+  }
+  
+  #page > main {
+    grid-area: main;
+    background-color: #ffff64;
+  }
+  
+  #page > footer {
+    grid-area: foot;
+    background-color: #8cffa0;
+  } */
+
+
+
+
+/* Auth Components*/
+.auth-component-main-container {
+
+    display: grid;
+    grid-area: nav;
+    justify-content: center;
+    border: 1px solid black;
+    margin: 10% 30%;
+    padding-bottom: 3rem;
+  }
+  
+  .auth-component-input {
+    margin-bottom: 0.75rem;
+    border: none;
+  }
+  .auth-component-input input {
+    display: block;
+  }
+  
+  /* All Posts*/
+  .posts-main-container {
+    display: grid;
+    width: 100%;
+    height: 250px;
+    grid-template-areas: "head head"
+                         "nav  main"
+                         "nav  foot";
+    grid-template-rows: 50px 1fr 30px;
+    grid-template-columns: 150px 1fr;
+    /* display: flex;
+    flex-wrap: wrap; */
+    /* grid-area: main; */
+    background-color: #ffff64;
+    justify-content: center;
+  }
+  
+  .post-card {
+    display:grid;
+    grid-area: main;
+    border: 1px solid black;
+    background-color: rgb(177, 218, 244);
+    margin: 1rem 1rem;
+    width: 300px;
+    padding: 0.2rem;
+  }
+  
