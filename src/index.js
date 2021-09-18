@@ -12,35 +12,56 @@ import {
 import {Header,
 Login,
 Register,
-// NewPosts,
+NewPost,
 // Profile,
 Home,
 // Search
 } from "./components";
 
-const App = () => {
-const [posts, setPosts] = useState([])
+import { clearCurrentUser, getToken } from './auth'
 
+//
+
+const App = () => {
 const [isLoggedIn, setIsLoggedIn] = useState(false)
 const [isLoading, setIsLoading] = useState(false)
+const [allPosts, setAllPosts] = useState([]);
 
-
+useEffect(()=>{
+  if (getToken()){
+    setIsLoggedIn(true)
+  }
+}, [])
 
 return (
   <div id="App">
     <Header />
 
-    <nav className="navBar">
+    {isLoggedIn===false ? <nav className="navBar">
+    <Link className="navBarLink" to="/">
+      Home
+    </Link>
     <Link className="navBarLink" to="/login">
       Login
     </Link>
     <Link className="navBarLink" to="/register">
       Register
     </Link>
+    </nav>
+
+    :
+
+    <nav className="navBar">
     <Link className="navBarLink" to="/">
       Home
     </Link>
-    </nav>
+    {/* <Link className="navBarLink" to="/Profile">Profile</Link> */}
+    <Link className="navBarLink" to="/"
+    onClick={(event)=>{clearCurrentUser()}}>Logout</Link>
+    <Link className="navBarLink" to="/NewPost">
+      Sell a thing
+    </Link>
+    </nav>}
 
     <Switch>
       <Route path="/login">
@@ -51,9 +72,17 @@ return (
         {" "}
         <Register setIsLoading={setIsLoading} setIsLoggedIn={setIsLoggedIn} />
       </Route>
+      <Route path="/NewPost">
+        {" "}
+        <NewPost allPosts={allPosts} setAllPosts={setAllPosts} setIsLoading={setIsLoading}/>
+      </Route>
+      {/* <Route path="/Profile">
+        {" "}
+        <Profile />
+      </Route> */}
       <Route path="/">
         {" "}
-        <Home />
+        <Home allPosts={allPosts} setAllPosts={setAllPosts}/>
       </Route>
     </Switch>
 

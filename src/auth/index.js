@@ -9,4 +9,5 @@ export function getToken(){
 
 export function clearCurrentUser(){
     localStorage.removeItem('currentUser')
+    setIsLoggedIn(false)
 }
