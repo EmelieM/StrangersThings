@@ -13,7 +13,7 @@ import {Header,
 Login,
 Register,
 NewPost,
-// Profile,
+Profile,
 Home,
 // Search
 } from "./components";
@@ -55,7 +55,7 @@ return (
     <Link className="navBarLink" to="/">
       Home
     </Link>
-    {/* <Link className="navBarLink" to="/Profile">Profile</Link> */}
+    <Link className="navBarLink" to="/Profile">Profile</Link>
     <Link className="navBarLink" to="/"
     onClick={(event)=>{clearCurrentUser()}}>Logout</Link>
     <Link className="navBarLink" to="/NewPost">
@@ -76,10 +76,10 @@ return (
         {" "}
         <NewPost allPosts={allPosts} setAllPosts={setAllPosts} setIsLoading={setIsLoading}/>
       </Route>
-      {/* <Route path="/Profile">
+      <Route path="/Profile">
         {" "}
         <Profile />
-      </Route> */}
+      </Route>
       <Route path="/">
         {" "}
         <Home allPosts={allPosts} setAllPosts={setAllPosts}/>
