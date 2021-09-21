@@ -20,7 +20,7 @@ import {
   Home,
   SinglePost,
   SinglePostPage,
-  // Search
+  Search,
 } from "./components";
 
 import { clearCurrentUser, getToken } from "./auth";
@@ -116,7 +116,7 @@ const App = () => {
 
         <Route path="/">
           {" "}
-          <Home allPosts={allPosts} setAllPosts={setAllPosts} />
+          <Search allPosts={allPosts} setAllPosts={setAllPosts} />
         </Route>
       </Switch>
     </div>

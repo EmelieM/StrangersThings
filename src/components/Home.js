@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { fetchAllPosts } from "../api";
 import { Link } from "react-router-dom";
 
 import SinglePost from "./SinglePost";
