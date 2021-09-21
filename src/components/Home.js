@@ -1,41 +1,18 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { Link } from "react-router-dom";
 
-const Home = (props) => {
-  const allPosts = props.allPosts;
-  const setAllPosts = props.setAllPosts;
+import SinglePost from "./SinglePost";
 
-  async function fetchAllPosts() {
-    try {
-      const response = await axios.get(
-        "https://strangers-things.herokuapp.com/api/2106-CPU-RM-WEB-PT/posts",
-        {
-          headers: {
-            "auth-token":
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTQyYWFmM2NkNmYxMDAwMTcwMDIzYjMiLCJ1c2VybmFtZSI6Im15dXNlcm5hbWUiLCJpYXQiOjE2MzE3NTkxODR9.JB2RENTiLAKRTfXtq6N171vMQQHNEWGdNWAKDShyP74",
-          },
-        }
-      );
-      setAllPosts(response.data.data.posts);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  useEffect(() => {
-    fetchAllPosts();
-  }, []);
+const Home = ({ allPosts }) => {
   return (
     <div className="posts-main-countainer">
       <h1>Posts</h1>
       {allPosts.length
-        ? allPosts.map((e) => {
+        ? allPosts.map((post) => {
             return (
-              <div key={e._id} className="post-card">
-          
-                <h3>{e.title}</h3>
-                <p>{e.description}</p>
-              </div>
+              <Link to={`/posts/${post._id}`} key={post._id}>
+                <SinglePost post={post} />;
+              </Link>
             );
           })
         : null}
