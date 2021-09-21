@@ -63,7 +63,9 @@ const App = () => {
           <Link className="navBarLink" to="/">
             Home
           </Link>
-          {/* <Link className="navBarLink" to="/Profile">Profile</Link> */}
+          <Link className="navBarLink" to="/Profile">
+            Profile
+          </Link>
           <Link
             className="navBarLink"
             to="/"
@@ -79,27 +81,6 @@ const App = () => {
         </nav>
       )}
 
-      <nav className="navBar">
-        <Link className="navBarLink" to="/">
-          Home
-        </Link>
-        <Link className="navBarLink" to="/Profile">
-          Profile
-        </Link>
-        <Link
-          className="navBarLink"
-          to="/"
-          onClick={(event) => {
-            clearCurrentUser();
-          }}
-        >
-          Logout
-        </Link>
-        <Link className="navBarLink" to="/NewPost">
-          Sell a thing
-        </Link>
-      </nav>
-
       <Switch>
         <Route path="/posts/:postId">
           <SinglePostPage allPosts={allPosts} />
@@ -108,14 +89,17 @@ const App = () => {
         <Route path="/posts">
           <Home allPosts={allPosts} />
         </Route>
+
         <Route path="/login">
           {" "}
           <Login setIsLoading={setIsLoading} setIsLoggedIn={setIsLoggedIn} />
         </Route>
+
         <Route path="/register">
           {" "}
           <Register setIsLoading={setIsLoading} setIsLoggedIn={setIsLoggedIn} />
         </Route>
+
         <Route path="/NewPost">
           {" "}
           <NewPost
@@ -124,10 +108,12 @@ const App = () => {
             setIsLoading={setIsLoading}
           />
         </Route>
+
         <Route path="/Profile">
           {" "}
           <Profile />
         </Route>
+
         <Route path="/">
           {" "}
           <Home allPosts={allPosts} setAllPosts={setAllPosts} />
