@@ -57,3 +57,21 @@ export async function makePosting(title, description, price, location, willDeliv
     throw error
   }
 }
+
+//
+
+export async function getUserInfo(){
+  const token = getToken()
+
+  try{
+      const { data } = await axios.get(`${ BASE }/users/me`,
+      {headers: {
+        "Content-Type": 'application/JSON',
+        'Authorization': `Bearer ${token}`
+      }});
+      return data
+    }
+    catch(error){
+      throw error
+    }
+}
