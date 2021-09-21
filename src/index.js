@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
+import axios from "axios";
+import { fetchAllPosts } from "./api";
 
 import {
   BrowserRouter as Router,
@@ -16,11 +18,12 @@ import {
   NewPost,
   Profile,
   Home,
+  SinglePost,
+  SinglePostPage,
   // Search
 } from "./components";
 
 import { clearCurrentUser, getToken } from "./auth";
-import { fetchAllPosts } from "./api";
 
 //
 
@@ -28,6 +31,10 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [allPosts, setAllPosts] = useState([]);
+
+  useEffect(() => {
+    fetchAllPosts(setAllPosts);
+  }, []);
 
   useEffect(() => {
     if (getToken()) {
@@ -56,9 +63,7 @@ const App = () => {
           <Link className="navBarLink" to="/">
             Home
           </Link>
-          <Link className="navBarLink" to="/Profile">
-            Profile
-          </Link>
+          {/* <Link className="navBarLink" to="/Profile">Profile</Link> */}
           <Link
             className="navBarLink"
             to="/"
@@ -74,7 +79,35 @@ const App = () => {
         </nav>
       )}
 
+      <nav className="navBar">
+        <Link className="navBarLink" to="/">
+          Home
+        </Link>
+        <Link className="navBarLink" to="/Profile">
+          Profile
+        </Link>
+        <Link
+          className="navBarLink"
+          to="/"
+          onClick={(event) => {
+            clearCurrentUser();
+          }}
+        >
+          Logout
+        </Link>
+        <Link className="navBarLink" to="/NewPost">
+          Sell a thing
+        </Link>
+      </nav>
+
       <Switch>
+        <Route path="/posts/:postId">
+          <SinglePostPage allPosts={allPosts} />
+        </Route>
+
+        <Route path="/posts">
+          <Home allPosts={allPosts} />
+        </Route>
         <Route path="/login">
           {" "}
           <Login setIsLoading={setIsLoading} setIsLoggedIn={setIsLoggedIn} />
