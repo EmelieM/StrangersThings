@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+import {fetchAllPosts} from "./api"
 
 import {
   BrowserRouter as Router,
@@ -31,26 +32,8 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [allPosts, setAllPosts] = useState([]);
 
-
-  async function fetchAllPosts() {
-    try {
-      const myToken= getToken()
-      const response = await axios.get(
-        "https://strangers-things.herokuapp.com/api/2106-CPU-RM-WEB-PT/posts",
-        {
-          headers: {
-            "auth-token": myToken,
-          },
-        }
-      );
-      setAllPosts(response.data.data.posts);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
   useEffect(() => {
-    fetchAllPosts();
+    fetchAllPosts(setAllPosts);
   }, []);
   
   useEffect(() => {
