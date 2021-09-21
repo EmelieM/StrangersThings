@@ -17,6 +17,23 @@ export async function loginUser(username, password) {
   }
 }
 
+export async function fetchAllPosts(setAllPosts) {
+  try {
+    const myToken= getToken()
+    const response = await axios.get(
+      "https://strangers-things.herokuapp.com/api/2106-CPU-RM-WEB-PT/posts",
+      {
+        headers: {
+          "auth-token": myToken,
+        },
+      }
+    );
+    setAllPosts(response.data.data.posts);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 //
 
 export async function registerUser(username, password) {
