@@ -131,3 +131,40 @@ export async function makeMessage(POST_ID, content) {
     throw error;
   }
 }
+
+//
+
+export async function editPost(
+  title,
+  description,
+  price,
+  location,
+  willDeliver,
+  POST_ID
+) {
+  const token = getToken();
+
+  try {
+    const { data } = await axios.patch(
+      `${BASE}/posts/${POST_ID}`,
+      {
+        post: {
+          title,
+          description,
+          price,
+          location,
+          willDeliver,
+        },
+      },
+      {
+        headers: {
+          "Content-Type": "application/JSON",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
