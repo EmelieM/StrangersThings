@@ -24,9 +24,11 @@ const Profile = () => {
         {userPosts && userPosts.length
           ? userPosts.map((post) => {
               return (
-                <div key={post._id} className="post-card">
-                  <h2>{post.title}</h2>
-                  <p>{post.description}</p>
+                <div>
+                  <div key={post._id} className="post-card">
+                    <h2>{post.title}</h2>
+                    <p>{post.description}</p>
+                  </div>
                 </div>
               );
             })
