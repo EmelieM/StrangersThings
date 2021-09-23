@@ -83,7 +83,7 @@ const App = () => {
 
       <Switch>
         <Route path="/posts/:postId">
-          <SinglePostPage allPosts={allPosts} />
+          <SinglePostPage allPosts={allPosts} setIsLoading={setIsLoading} />
         </Route>
 
         <Route path="/posts">

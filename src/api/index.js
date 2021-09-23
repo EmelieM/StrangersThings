@@ -103,3 +103,31 @@ export async function getUserInfo() {
     throw error;
   }
 }
+
+//
+
+export async function makeMessage(POST_ID, content) {
+  const token = getToken();
+
+  try {
+    const { data } = await axios.post(
+      `${BASE}/posts/${POST_ID}/messages`,
+      {
+        message: {
+          content,
+        },
+      },
+      {
+        headers: {
+          "Content-Type": "application/JSON",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    console.log(data);
+    return data.data.message.content;
+  } catch (error) {
+    throw error;
+  }
+}
