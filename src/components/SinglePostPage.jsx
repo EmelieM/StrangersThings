@@ -2,7 +2,21 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { SinglePost } from "./";
 
-const SinglePostPage = ({ allPosts, setIsLoading }) => {
+const SinglePostPage = ({
+  allPosts,
+  setAllPosts,
+  setIsLoading,
+  willDeliver,
+  setDeliver,
+  title,
+  setTitle,
+  description,
+  setDescription,
+  price,
+  setPrice,
+  location,
+  setLocation,
+}) => {
   const { postId } = useParams();
 
   const myPost = allPosts.find((post) => {
@@ -21,7 +35,25 @@ const SinglePostPage = ({ allPosts, setIsLoading }) => {
     );
   }
 
-  return <SinglePost post={myPost} setIsLoading={setIsLoading} />;
+  return (
+    <SinglePost
+      post={myPost}
+      setIsLoading={setIsLoading}
+      allPosts={allPosts}
+      setAllPosts={setAllPosts}
+      setIsLoading={setIsLoading}
+      willDeliver={willDeliver}
+      setDeliver={setDeliver}
+      title={title}
+      setTitle={setTitle}
+      description={description}
+      setDescription={setDescription}
+      price={price}
+      setPrice={setPrice}
+      location={location}
+      setLocation={setLocation}
+    />
+  );
 };
 
 export default SinglePostPage;
