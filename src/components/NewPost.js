@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import { makePosting } from "../api";
 
 const NewPost = (props) => {
-  const { allPosts, setAllPosts, setIsLoading } = props;
-
-  const [willDeliver, setDeliver] = useState(false);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
-  const [location, setLocation] = useState("");
+  const {
+    allPosts,
+    setAllPosts,
+    setIsLoading,
+    willDeliver,
+    setDeliver,
+    title,
+    setTitle,
+    description,
+    setDescription,
+    price,
+    setPrice,
+    location,
+    setLocation,
+  } = props;
 
   return (
     <div>

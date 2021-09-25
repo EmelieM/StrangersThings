@@ -9,11 +9,11 @@ const Home = ({ allPosts }) => {
       <h1>Posts</h1>
       {allPosts.length
         ? allPosts.map((post) => {
-            return (
+            return post.active ? (
               <Link to={`/posts/${post._id}`} key={post._id}>
                 <SinglePost post={post} />
               </Link>
-            );
+            ) : null;
           })
         : null}
     </div>

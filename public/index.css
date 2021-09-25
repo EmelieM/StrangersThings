@@ -60,7 +60,10 @@ h3 {
 .navBarLink {
 }
 
-.searchBar-input {
-  display: flex;
-  background-color: #cdf5fc;
-}
+  
+  /* hidden */
+
+  .hidden{
+    display: none
+  }
+
