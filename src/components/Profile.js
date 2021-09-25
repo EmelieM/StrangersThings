@@ -28,7 +28,7 @@ const Profile = () => {
 
               return post.active ? (
                 <Link to={`/posts/${post._id}`} key={post._id}>
-                  <SinglePost post={post} />;
+                  <SinglePost post={post} />
                 </Link>
               ) : null;
 
