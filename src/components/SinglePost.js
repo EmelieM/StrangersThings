@@ -143,6 +143,7 @@ const SinglePost = (props) => {
                   console.error(err);
                 } finally {
                   setIsLoading(false);
+                  history.push("/Profile");
                 }
               }}
             >
@@ -151,7 +152,7 @@ const SinglePost = (props) => {
                 <input
                   id="title"
                   type="text"
-                  placeholder="listing title"
+                  placeholder={post.title}
                   value={title}
                   onChange={(event) => {
                     setTitle(event.target.value);
@@ -164,7 +165,7 @@ const SinglePost = (props) => {
                 <input
                   id="description"
                   type="text"
-                  placeholder="listing description"
+                  placeholder={post.description}
                   value={description}
                   onChange={(event) => {
                     setDescription(event.target.value);
@@ -177,7 +178,7 @@ const SinglePost = (props) => {
                 <input
                   id="price"
                   type="text"
-                  placeholder="price in USD"
+                  placeholder={post.price}
                   value={price}
                   onChange={(event) => {
                     setPrice(event.target.value);
@@ -190,7 +191,7 @@ const SinglePost = (props) => {
                 <input
                   id="location"
                   type="text"
-                  placeholder="listing location"
+                  placeholder={post.location}
                   value={location}
                   onChange={(event) => {
                     setLocation(event.target.value);
