@@ -20,7 +20,7 @@ import {
   Home,
   SinglePost,
   SinglePostPage,
-  // Search
+  Search,
 } from "./components";
 
 import { clearCurrentUser, getToken } from "./auth";
@@ -82,7 +82,7 @@ const App = () => {
 
       <Switch>
         <Route path="/posts/:postId">
-          <SinglePostPage allPosts={allPosts} />
+          <SinglePostPage allPosts={allPosts} setIsLoading={setIsLoading} />
         </Route>
 
         <Route path="/posts">
@@ -108,9 +108,10 @@ const App = () => {
           {" "}
           <Profile />
         </Route>
+
         <Route path="/">
           {" "}
-          <Home allPosts={allPosts} setAllPosts={setAllPosts} />
+          <Search allPosts={allPosts} setAllPosts={setAllPosts} />
         </Route>
       </Switch>
     </div>

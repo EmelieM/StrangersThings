@@ -113,3 +113,68 @@ export async function getUserInfo() {
     throw error;
   }
 }
+
+//
+
+export async function makeMessage(POST_ID, content) {
+  const token = getToken();
+
+  try {
+    const { data } = await axios.post(
+      `${BASE}/posts/${POST_ID}/messages`,
+      {
+        message: {
+          content,
+        },
+      },
+      {
+        headers: {
+          "Content-Type": "application/JSON",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    console.log(data);
+    return data.data.message.content;
+  } catch (error) {
+    throw error;
+  }
+}
+
+//
+
+export async function editPost(
+  title,
+  description,
+  price,
+  location,
+  willDeliver,
+  POST_ID
+) {
+  const token = getToken();
+
+  try {
+    const { data } = await axios.patch(
+      `${BASE}/posts/${POST_ID}`,
+      {
+        post: {
+          title,
+          description,
+          price,
+          location,
+          willDeliver,
+        },
+      },
+      {
+        headers: {
+          "Content-Type": "application/JSON",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
