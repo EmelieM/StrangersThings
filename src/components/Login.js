@@ -74,9 +74,4 @@ const Login = (props) => {
   );
 };
 
-/*This will have the login options. 
-If they do not have a login that matches the registered logins an error will pop up
-and they'll be directed to register a new user
-there will be a link on the bottom to register as a new user which will redirect to the register tab*/
-
 export default Login;

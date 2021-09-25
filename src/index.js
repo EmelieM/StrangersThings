@@ -21,7 +21,6 @@ import {
   SinglePost,
   SinglePostPage,
   Search,
-  Delete,
 } from "./components";
 
 import { clearCurrentUser, getToken } from "./auth";
