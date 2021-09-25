@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import axios from "axios";
 import { fetchAllPosts } from "./api";
+import "./index.css";
 
 import {
   BrowserRouter as Router,

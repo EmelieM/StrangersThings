@@ -25,13 +25,11 @@ const Profile = () => {
         <h3>Your Posts:</h3>
         {userPosts && userPosts.length
           ? userPosts.map((post) => {
-
               return post.active ? (
                 <Link to={`/posts/${post._id}`} key={post._id}>
                   <SinglePost post={post} />
                 </Link>
               ) : null;
-
             })
           : null}
       </div>
