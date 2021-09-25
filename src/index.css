@@ -35,13 +35,6 @@ h3 {
   display: block;
 }
 
-/* All Posts*/
-/* .posts-main-container {
-  display: flex;
-  background-color: #ffff64;
-  justify-content: center;
-} */
-
 .post-card {
   border: 1px solid black;
   background-color: #fff6b0;
@@ -56,10 +49,9 @@ h3 {
   background-color: #9ff0f9;
   padding: 0.25rem;
 }
-  
-  /* hidden */
 
-  .hidden{
-    display: none
-  }
+/* hidden */
 
+.hidden {
+  display: none;
+}
