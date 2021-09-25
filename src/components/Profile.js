@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getUserInfo } from "../api";
+import { Link } from "react-router-dom";
+import SinglePost from "./SinglePost";
 
 const Profile = () => {
   const [user, setUser] = useState({});
@@ -23,14 +25,11 @@ const Profile = () => {
         <h2>Your Posts:</h2>
         {userPosts && userPosts.length
           ? userPosts.map((post) => {
-              return (
-                <div>
-                  <div key={post._id} className="post-card">
-                    <h2>{post.title}</h2>
-                    <p>{post.description}</p>
-                  </div>
-                </div>
-              );
+              return post.active ? (
+                <Link to={`/posts/${post._id}`} key={post._id}>
+                  <SinglePost post={post} />;
+                </Link>
+              ) : null;
             })
           : null}
       </div>

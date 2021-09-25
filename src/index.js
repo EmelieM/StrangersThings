@@ -31,6 +31,11 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [allPosts, setAllPosts] = useState([]);
+  const [willDeliver, setDeliver] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [location, setLocation] = useState("");
 
   useEffect(() => {
     fetchAllPosts(setAllPosts);
@@ -66,24 +71,32 @@ const App = () => {
           <Link className="navBarLink" to="/Profile">
             Profile
           </Link>
-          <Link
-            className="navBarLink"
-            to="/"
-            onClick={(event) => {
-              clearCurrentUser();
-            }}
-          >
-            Logout
-          </Link>
           <Link className="navBarLink" to="/NewPost">
             Sell a thing
           </Link>
+          <button className="navBarLink" onClick={clearCurrentUser}>
+            Logout
+          </button>
         </nav>
       )}
 
       <Switch>
         <Route path="/posts/:postId">
-          <SinglePostPage allPosts={allPosts} setIsLoading={setIsLoading} />
+          <SinglePostPage
+            allPosts={allPosts}
+            setIsLoading={setIsLoading}
+            setAllPosts={setAllPosts}
+            willDeliver={willDeliver}
+            setDeliver={setDeliver}
+            title={title}
+            setTitle={setTitle}
+            description={description}
+            setDescription={setDescription}
+            price={price}
+            setPrice={setPrice}
+            location={location}
+            setLocation={setLocation}
+          />
         </Route>
 
         <Route path="/posts">
@@ -103,6 +116,16 @@ const App = () => {
             allPosts={allPosts}
             setAllPosts={setAllPosts}
             setIsLoading={setIsLoading}
+            willDeliver={willDeliver}
+            setDeliver={setDeliver}
+            title={title}
+            setTitle={setTitle}
+            description={description}
+            setDescription={setDescription}
+            price={price}
+            setPrice={setPrice}
+            location={location}
+            setLocation={setLocation}
           />
         </Route>
         <Route path="/Profile">
