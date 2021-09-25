@@ -21,6 +21,7 @@ import {
   SinglePost,
   SinglePostPage,
   Search,
+  Delete,
 } from "./components";
 
 import { clearCurrentUser, getToken } from "./auth";
@@ -75,7 +76,7 @@ const App = () => {
             Logout
           </Link>
           <Link className="navBarLink" to="/NewPost">
-            Sell a thing
+            Sell a Thing
           </Link>
         </nav>
       )}
