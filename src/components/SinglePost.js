@@ -20,9 +20,13 @@ const SinglePost = (props) => {
     setLocation,
   } = props;
 
+  //
+
   const POST_ID = post._id;
 
   const history = useHistory();
+
+  //
 
   const [user, setUser] = useState({ data: {} });
 
@@ -30,6 +34,8 @@ const SinglePost = (props) => {
     const data = await getUserInfo();
     setUser(data);
   }, []);
+
+  //
 
   const [content, setContent] = useState("");
   const [isActive, setActive] = useState(false);
@@ -41,6 +47,8 @@ const SinglePost = (props) => {
     return setDeleteActive(!deleteActive);
   };
   const [certainDelete, setCertainDelete] = useState(false);
+
+  //
 
   const isParams = useParams();
   const paramsArray = Object.keys(isParams);
