@@ -20,6 +20,4 @@ const Home = ({ allPosts }) => {
   );
 };
 
-/*This will be the main page of where all the items for sale will be*/
-
 export default Home;
