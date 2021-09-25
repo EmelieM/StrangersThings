@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { makeMessage } from "../api";
+import { useParams, useHistory } from "react-router-dom";
+import { makeMessage, getUserInfo, editPost, deleteMyPost } from "../api";
 
 const SinglePost = (props) => {
   const {
@@ -19,18 +19,33 @@ const SinglePost = (props) => {
     location,
     setLocation,
   } = props;
+
   const POST_ID = post._id;
+
+  const history = useHistory();
+
+  const [user, setUser] = useState({ data: {} });
+
+  useEffect(async () => {
+    const data = await getUserInfo();
+    setUser(data);
+  }, []);
 
   const [content, setContent] = useState("");
   const [isActive, setActive] = useState(false);
-  const handleToggle = () => {
-    setActive(!isActive);
+  const editToggle = () => {
+    return setActive(!isActive);
   };
+  const [deleteActive, setDeleteActive] = useState(false);
+  const deleteToggle = () => {
+    return setDeleteActive(!deleteActive);
+  };
+  const [certainDelete, setCertainDelete] = useState(false);
 
   const isParams = useParams();
   const paramsArray = Object.keys(isParams);
 
-  if (paramsArray.length && post.isAuthor === false) {
+  if (paramsArray.length && post.author._id !== user.data._id) {
     return (
       <div>
         <div className="post-card">
@@ -72,16 +87,39 @@ const SinglePost = (props) => {
         </div>
       </div>
     );
-  } else if (paramsArray.length && post.isAuthor === true) {
+  } else if (paramsArray.length && post.author._id === user.data._id) {
     return (
       <div>
-        <button onClick={handleToggle}>Edit?</button>
-        <div className={isActive ? null : "hidden"}>
-          <div className="post-card">
-            <h3>{post.title}</h3>
-            <p>{post.description}</p>
-          </div>
+        <div className="post-card">
+          <h3>{post.title}</h3>
+          <p>{post.description}</p>
+        </div>
+        <button onClick={deleteToggle}>Delete?</button>
+        <div className={deleteActive ? null : "hidden"}>
+          <fieldset className="fieldset">
+            <label>Are you sure you want to delete?</label>
 
+            <input
+              id="certainDelete"
+              type="checkbox"
+              value={certainDelete}
+              onChange={() => {
+                setCertainDelete(!certainDelete);
+              }}
+            />
+            <button
+              onClick={(event) => {
+                event.preventDefault();
+                certainDelete ? deleteMyPost(POST_ID) : null;
+                history.push("/");
+              }}
+            >
+              Complete Deletion
+            </button>
+          </fieldset>
+        </div>
+        <button onClick={editToggle}>Edit?</button>
+        <div className={isActive ? null : "hidden"}>
           <div>
             <form
               id="newPosting"
@@ -172,6 +210,7 @@ const SinglePost = (props) => {
                   }}
                 />
               </fieldset>
+              <button type="submit">Submit</button>
             </form>
           </div>
         </div>

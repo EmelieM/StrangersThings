@@ -8,5 +8,6 @@ export function getToken() {
 }
 
 export function clearCurrentUser() {
-  localStorage.removeItem("currentUser");
+  localStorage.removeItem("token");
+  location.reload();
 }

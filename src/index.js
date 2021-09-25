@@ -71,12 +71,12 @@ const App = () => {
           <Link className="navBarLink" to="/Profile">
             Profile
           </Link>
-          <button className="navBarLink" onClick={clearCurrentUser}>
-            Logout
-          </button>
           <Link className="navBarLink" to="/NewPost">
             Sell a thing
           </Link>
+          <button className="navBarLink" onClick={clearCurrentUser}>
+            Logout
+          </button>
         </nav>
       )}
 

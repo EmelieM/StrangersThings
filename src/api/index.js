@@ -17,6 +17,8 @@ export async function loginUser(username, password) {
   }
 }
 
+//
+
 export async function fetchAllPosts(setAllPosts) {
   try {
     const myToken = getToken();
@@ -166,5 +168,25 @@ export async function editPost(
     return data;
   } catch (error) {
     throw error;
+  }
+}
+
+//
+
+export async function deleteMyPost(POST_ID) {
+  const token = getToken();
+
+  try {
+    const { data } = await axios.delete(`${BASE}/posts/${POST_ID}`, {
+      headers: {
+        "Content-Type": "application/JSON",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  } finally {
+    location.reload();
   }
 }
