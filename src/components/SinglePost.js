@@ -74,105 +74,106 @@ const SinglePost = (props) => {
     );
   } else if (paramsArray.length && post.isAuthor === true) {
     return (
-      <div className={isActive ? null : "hidden"}>
-        <div className="post-card">
-          <h3>{post.title}</h3>
-          <p>{post.description}</p>
-        </div>
+      <div>
+        <button onClick={handleToggle}>Edit?</button>
+        <div className={isActive ? null : "hidden"}>
+          <div className="post-card">
+            <h3>{post.title}</h3>
+            <p>{post.description}</p>
+          </div>
 
-        <div>
-          <form
-            id="newPosting"
-            onSubmit={async (event) => {
-              event.preventDefault();
-              setIsLoading(true);
+          <div>
+            <form
+              id="newPosting"
+              onSubmit={async (event) => {
+                event.preventDefault();
+                setIsLoading(true);
 
-              try {
-                const results = await editPost(
-                  title,
-                  description,
-                  price,
-                  location,
-                  willDeliver,
-                  POST_ID
-                );
-                console.log(results.data.post);
-                const newPosts = allPosts.slice();
-                setAllPosts([...newPosts, results.data.post]);
-              } catch (err) {
-                console.error(err);
-              } finally {
-                setIsLoading(false);
-              }
-            }}
-          >
-            <fieldset className="title">
-              <label htmlFor="title">Title</label>
-              <input
-                id="title"
-                type="text"
-                placeholder="listing title"
-                value={title}
-                onChange={(event) => {
-                  setTitle(event.target.value);
-                }}
-              />
-            </fieldset>
+                try {
+                  const results = await editPost(
+                    title,
+                    description,
+                    price,
+                    location,
+                    willDeliver,
+                    POST_ID
+                  );
+                  console.log(results.data.post);
+                  const newPosts = allPosts.slice();
+                  setAllPosts([...newPosts, results.data.post]);
+                } catch (err) {
+                  console.error(err);
+                } finally {
+                  setIsLoading(false);
+                }
+              }}
+            >
+              <fieldset className="title">
+                <label htmlFor="title">Title</label>
+                <input
+                  id="title"
+                  type="text"
+                  placeholder="listing title"
+                  value={title}
+                  onChange={(event) => {
+                    setTitle(event.target.value);
+                  }}
+                />
+              </fieldset>
 
-            <fieldset className="description">
-              <label htmlFor="description">Description</label>
-              <input
-                id="description"
-                type="text"
-                placeholder="listing description"
-                value={description}
-                onChange={(event) => {
-                  setDescription(event.target.value);
-                }}
-              />
-            </fieldset>
+              <fieldset className="description">
+                <label htmlFor="description">Description</label>
+                <input
+                  id="description"
+                  type="text"
+                  placeholder="listing description"
+                  value={description}
+                  onChange={(event) => {
+                    setDescription(event.target.value);
+                  }}
+                />
+              </fieldset>
 
-            <fieldset className="price">
-              <label htmlFor="price">Price $</label>
-              <input
-                id="price"
-                type="text"
-                placeholder="price in USD"
-                value={price}
-                onChange={(event) => {
-                  setPrice(event.target.value);
-                }}
-              />
-            </fieldset>
+              <fieldset className="price">
+                <label htmlFor="price">Price $</label>
+                <input
+                  id="price"
+                  type="text"
+                  placeholder="price in USD"
+                  value={price}
+                  onChange={(event) => {
+                    setPrice(event.target.value);
+                  }}
+                />
+              </fieldset>
 
-            <fieldset className="location">
-              <label htmlFor="location">Location</label>
-              <input
-                id="location"
-                type="text"
-                placeholder="listing location"
-                value={location}
-                onChange={(event) => {
-                  setLocation(event.target.value);
-                }}
-              />
-            </fieldset>
+              <fieldset className="location">
+                <label htmlFor="location">Location</label>
+                <input
+                  id="location"
+                  type="text"
+                  placeholder="listing location"
+                  value={location}
+                  onChange={(event) => {
+                    setLocation(event.target.value);
+                  }}
+                />
+              </fieldset>
 
-            <fieldset className="willDeliver">
-              <label htmlFor="willDeliver">Willing to deliver?</label>
+              <fieldset className="willDeliver">
+                <label htmlFor="willDeliver">Willing to deliver?</label>
 
-              <input
-                id="willDeliver"
-                type="checkbox"
-                value={willDeliver}
-                onChange={() => {
-                  setDeliver(!willDeliver);
-                }}
-              />
-            </fieldset>
-
-            <button onClick={handleToggle}>Edit?</button>
-          </form>
+                <input
+                  id="willDeliver"
+                  type="checkbox"
+                  value={willDeliver}
+                  onChange={() => {
+                    setDeliver(!willDeliver);
+                  }}
+                />
+              </fieldset>
+            </form>
+          </div>
         </div>
       </div>
     );
