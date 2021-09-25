@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { SinglePost } from "./";
 
-const SinglePostPage = ({ allPosts }) => {
+const SinglePostPage = ({ allPosts, setIsLoading }) => {
   const { postId } = useParams();
+
   const myPost = allPosts.find((post) => {
     if (post._id === postId) {
       return true;
@@ -20,7 +21,7 @@ const SinglePostPage = ({ allPosts }) => {
     );
   }
 
-  return <SinglePost post={myPost} />;
+  return <SinglePost post={myPost} setIsLoading={setIsLoading} />;
 };
 
 export default SinglePostPage;
