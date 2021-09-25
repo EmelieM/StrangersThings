@@ -102,17 +102,14 @@ const App = () => {
         <Route path="/posts">
           <Home allPosts={allPosts} />
         </Route>
-
         <Route path="/login">
           {" "}
           <Login setIsLoading={setIsLoading} setIsLoggedIn={setIsLoggedIn} />
         </Route>
-
         <Route path="/register">
           {" "}
           <Register setIsLoading={setIsLoading} setIsLoggedIn={setIsLoggedIn} />
         </Route>
-
         <Route path="/NewPost">
           {" "}
           <NewPost
@@ -131,7 +128,6 @@ const App = () => {
             setLocation={setLocation}
           />
         </Route>
-
         <Route path="/Profile">
           {" "}
           <Profile />
