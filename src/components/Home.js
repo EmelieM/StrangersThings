@@ -11,7 +11,7 @@ const Home = ({ allPosts }) => {
         ? allPosts.map((post) => {
             return post.active ? (
               <Link to={`/posts/${post._id}`} key={post._id}>
-                <SinglePost post={post} />;
+                <SinglePost post={post} />
               </Link>
             ) : null;
           })

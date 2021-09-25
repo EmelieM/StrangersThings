@@ -21,6 +21,7 @@ import {
   SinglePost,
   SinglePostPage,
   Search,
+  Delete,
 } from "./components";
 
 import { clearCurrentUser, getToken } from "./auth";
@@ -50,7 +51,6 @@ const App = () => {
   return (
     <div id="App">
       <Header />
-
       {isLoggedIn === false ? (
         <nav className="navBar">
           <Link className="navBarLink" to="/">
@@ -72,7 +72,7 @@ const App = () => {
             Profile
           </Link>
           <Link className="navBarLink" to="/NewPost">
-            Sell a thing
+            Sell a Thing
           </Link>
           <button className="navBarLink" onClick={clearCurrentUser}>
             Logout

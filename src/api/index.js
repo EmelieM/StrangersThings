@@ -17,7 +17,7 @@ export async function loginUser(username, password) {
   }
 }
 
-//
+
 
 export async function fetchAllPosts(setAllPosts) {
   try {

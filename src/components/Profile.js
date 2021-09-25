@@ -22,20 +22,22 @@ const Profile = () => {
       </header>
 
       <div className="profile-posts">
-        <h2>Your Posts:</h2>
+        <h3>Your Posts:</h3>
         {userPosts && userPosts.length
           ? userPosts.map((post) => {
+
               return post.active ? (
                 <Link to={`/posts/${post._id}`} key={post._id}>
                   <SinglePost post={post} />;
                 </Link>
               ) : null;
+
             })
           : null}
       </div>
 
       <div className="profile-messages">
-        <h2>Your Messages:</h2>
+        <h3>Your Messages:</h3>
         {userMessages && userMessages.length
           ? userMessages.map((message) => {
               return (
