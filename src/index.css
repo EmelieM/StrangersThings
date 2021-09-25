@@ -36,11 +36,11 @@ h3 {
 }
 
 /* All Posts*/
-.posts-main-container {
+/* .posts-main-container {
   display: flex;
   background-color: #ffff64;
   justify-content: center;
-}
+} */
 
 .post-card {
   border: 1px solid black;
