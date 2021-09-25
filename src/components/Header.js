@@ -8,6 +8,4 @@ const Header = () => {
   );
 };
 
-//Simply has a logo with Strangers' Things on it
-
 export default Header;

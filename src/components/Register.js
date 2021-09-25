@@ -26,11 +26,9 @@ const Register = (props) => {
             try {
               if (passWord === confirmPass) {
                 const results = await registerUser(userName, passWord);
-                console.log(results.data.token);
                 storeUser(results.data.token);
                 setIsLoggedIn(true);
               } else {
-                console.log("Passwords do not match");
                 alert("Passwords do not match");
               }
             } catch (err) {

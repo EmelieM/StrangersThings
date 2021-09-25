@@ -25,7 +25,6 @@ const Login = (props) => {
 
             try {
               const results = await loginUser(userName, passWord);
-              console.log(results.data.token);
               storeUser(results.data.token);
               setIsLoggedIn(true);
             } catch (err) {

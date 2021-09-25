@@ -39,7 +39,6 @@ const NewPost = (props) => {
                 location,
                 willDeliver
               );
-              console.log(results.data.post);
               const newPosts = allPosts.slice();
               setAllPosts([...newPosts, results.data.post]);
             } catch (err) {

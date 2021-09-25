@@ -17,8 +17,6 @@ export async function loginUser(username, password) {
   }
 }
 
-
-
 export async function fetchAllPosts(setAllPosts) {
   try {
     const myToken = getToken();
@@ -126,8 +124,6 @@ export async function makeMessage(POST_ID, content) {
         },
       }
     );
-
-    console.log(data);
     return data.data.message.content;
   } catch (error) {
     throw error;
