@@ -20,7 +20,11 @@ import {
   Home,
   SinglePost,
   SinglePostPage,
+<<<<<<< HEAD
   // Search
+=======
+  Search,
+>>>>>>> 1a8706d89dccaa08e52fb2e8c6fefdc87ae0f9a0
 } from "./components";
 
 import { clearCurrentUser, getToken } from "./auth";
@@ -83,20 +87,36 @@ const App = () => {
 
       <Switch>
         <Route path="/posts/:postId">
+<<<<<<< HEAD
           <SinglePostPage allPosts={allPosts} />
+=======
+          <SinglePostPage allPosts={allPosts} setIsLoading={setIsLoading} />
+>>>>>>> 1a8706d89dccaa08e52fb2e8c6fefdc87ae0f9a0
         </Route>
 
         <Route path="/posts">
           <Home allPosts={allPosts} />
         </Route>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1a8706d89dccaa08e52fb2e8c6fefdc87ae0f9a0
         <Route path="/login">
           {" "}
           <Login setIsLoading={setIsLoading} setIsLoggedIn={setIsLoggedIn} />
         </Route>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1a8706d89dccaa08e52fb2e8c6fefdc87ae0f9a0
         <Route path="/register">
           {" "}
           <Register setIsLoading={setIsLoading} setIsLoggedIn={setIsLoggedIn} />
         </Route>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1a8706d89dccaa08e52fb2e8c6fefdc87ae0f9a0
         <Route path="/NewPost">
           {" "}
           <NewPost
@@ -105,13 +125,24 @@ const App = () => {
             setIsLoading={setIsLoading}
           />
         </Route>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1a8706d89dccaa08e52fb2e8c6fefdc87ae0f9a0
         <Route path="/Profile">
           {" "}
           <Profile />
         </Route>
+<<<<<<< HEAD
         <Route path="/">
           {" "}
           <Home allPosts={allPosts} setAllPosts={setAllPosts} />
+=======
+
+        <Route path="/">
+          {" "}
+          <Search allPosts={allPosts} setAllPosts={setAllPosts} />
+>>>>>>> 1a8706d89dccaa08e52fb2e8c6fefdc87ae0f9a0
         </Route>
       </Switch>
     </div>
